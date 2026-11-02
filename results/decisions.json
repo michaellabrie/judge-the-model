@@ -1,28 +1,28 @@
 {
-  "exported_at": null,
-  "words": 0,
+  "exported_at": "2026-11-02T05:23:41Z",
+  "words": 63,
   "word_limit": 150,
   "sections": {
     "before_results": {
-      "readmission": "",
-      "diabetes": ""
+      "readmission": "The positive class is patients readmitted within 30 days of discharge. I would prioritize reducing false negatives because missing a high-risk patient could prevent additional follow-up care or discharge support.",
+      "diabetes": "The positive class is adults with a doctor's diagnosis of diabetes or HbA1c of at least 6.5%. I would prioritize reducing false negatives because missing a patient could delay additional testing and treatment."
     },
     "recommendations": {
-      "readmission": "",
-      "diabetes": ""
+      "readmission": "None is adequate for this job because no model ranks patients much better than a coin flip (0.5): test AUROCs run from 0.583 (k-nearest neighbours) to 0.652 (random forest). At 0.50 every model has the same 91.0% test accuracy as \"always no\", and the best catches only 2 of the 359 readmitted test patients (gradient boosting). Missed readmissions matter most, but catching about half of them means lowering the threshold to 0.10: random forest then catches 200 of 359 (55.7%) while flagging 36.1 of every 100 patients, and only 13.8% of the patients it flags are readmitted. Its training AUROC of 0.997 against 0.652 on test shows it memorised its training patients, and a threshold chosen on test patients is likely optimistic. The data also come from a 1999–2008 cohort of inpatients with diabetes, not all discharges.",
+      "diabetes": "None is adequate for this job because finding positives matters most, and finding them costs too many false alarms. Logistic regression ranks best on test adults (test AUROC 0.827; training 0.810, so no sign of memorising), but at 0.50 it finds only 60 of the 200 adults with diabetes (30.0%). To find 90% (180 of 200) the threshold must drop to 0.12, which flags 51.7 of every 100 adults and gives 34.6 false alarms per 100, and only 33.1% of the adults it flags have diabetes. That threshold was chosen on the test adults, so its sensitivity is likely optimistic. The label also includes adults who were already diagnosed, so these results do not show how well it would find undiagnosed adults, the people a screening tool is for."
     },
     "design": {
-      "design_choice": "",
-      "ai_turned_down": ""
+      "design_choice": "I added a sensitivity-goal picker to Section 2 (A Threshold for the Job). My clinical lead picks a goal, such as finding 90% of the people with the outcome, and the app moves the threshold slider to the highest threshold that reaches it on the test patients and states what it costs in false alarms per 100 people. I chose this because for both jobs I decided missed positives matter most, and my lead thinks in \"how many cases do we find, and how many extra follow-ups does that cost\", not in thresholds. The slider stays, so the lead can still see the whole trade-off and choose.",
+      "ai_turned_down": "Claude Code (an AI coding agent) suggested drawing 100 patients as dots in Section 1, sorted into caught, missed, false alarm and correctly not flagged. I didn't use it because rounding to 100 dots hides small counts: at 0.50 logistic regression catches 1 of the 359 readmitted test patients, which would show as zero dots, and the exact-count confusion matrices already let my lead count each group."
     }
   },
   "complete": {
-    "before_results": false,
-    "recommendations": false,
-    "design": false
+    "before_results": true,
+    "recommendations": true,
+    "design": true
   },
   "recommendations": {
-    "readmission": "",
-    "diabetes": ""
+    "readmission": "None is adequate for this job because no model ranks patients much better than a coin flip (0.5): test AUROCs run from 0.583 (k-nearest neighbours) to 0.652 (random forest). At 0.50 every model has the same 91.0% test accuracy as \"always no\", and the best catches only 2 of the 359 readmitted test patients (gradient boosting). Missed readmissions matter most, but catching about half of them means lowering the threshold to 0.10: random forest then catches 200 of 359 (55.7%) while flagging 36.1 of every 100 patients, and only 13.8% of the patients it flags are readmitted. Its training AUROC of 0.997 against 0.652 on test shows it memorised its training patients, and a threshold chosen on test patients is likely optimistic. The data also come from a 1999–2008 cohort of inpatients with diabetes, not all discharges.",
+    "diabetes": "None is adequate for this job because finding positives matters most, and finding them costs too many false alarms. Logistic regression ranks best on test adults (test AUROC 0.827; training 0.810, so no sign of memorising), but at 0.50 it finds only 60 of the 200 adults with diabetes (30.0%). To find 90% (180 of 200) the threshold must drop to 0.12, which flags 51.7 of every 100 adults and gives 34.6 false alarms per 100, and only 33.1% of the adults it flags have diabetes. That threshold was chosen on the test adults, so its sensitivity is likely optimistic. The label also includes adults who were already diagnosed, so these results do not show how well it would find undiagnosed adults, the people a screening tool is for."
   }
 }
