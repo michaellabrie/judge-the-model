@@ -1,0 +1,423 @@
+{
+  "readmission": {
+    "name": "30-day readmission",
+    "unit": "discharge",
+    "units": "discharges",
+    "cohort": "UCI Diabetes 130-US Hospitals 1999–2008: inpatient stays of patients with diabetes. First discharge per patient, excluding discharge to hospice or death, then a stratified random sample of 20,000 (random_state=0).",
+    "job": "Predict readmission within 30 days, at discharge.",
+    "teaches": "The accuracy trap",
+    "framing": "Results apply to this historical inpatient cohort involving diabetes, not to all discharges.",
+    "positive": "Readmitted within 30 days",
+    "negative": "Not readmitted within 30 days",
+    "prediction_point": "At discharge",
+    "source": "UCI Machine Learning Repository: Diabetes 130-US Hospitals for Years 1999–2008",
+    "url": "https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008",
+    "citation": "Strack B, DeShazo JP, Gennings C, et al. Impact of HbA1c measurement on hospital readmission rates: analysis of 70,000 clinical database patient records. BioMed Research International 2014;2014:781670.",
+    "licence": "CC BY 4.0",
+    "one_per_patient": true,
+    "columns": [
+      {
+        "name": "row_id",
+        "meaning": "Row number in this file",
+        "units": "",
+        "kind": "id",
+        "known": "Assigned by the course",
+        "missing": "never blank"
+      },
+      {
+        "name": "split",
+        "meaning": "`train` (the models learn from these rows) or `test` (used only to evaluate them)",
+        "units": "",
+        "kind": "id",
+        "known": "Assigned by the course",
+        "missing": "never blank"
+      },
+      {
+        "name": "age",
+        "meaning": "Age band midpoint (the file gives 10-year bands, e.g. [70-80) → 75)",
+        "units": "years",
+        "kind": "number",
+        "known": "At admission",
+        "missing": "never blank"
+      },
+      {
+        "name": "female",
+        "meaning": "1 = female, 0 = male",
+        "units": "0/1",
+        "kind": "0/1",
+        "known": "At admission",
+        "missing": "never blank"
+      },
+      {
+        "name": "time_in_hospital",
+        "meaning": "Length of stay",
+        "units": "days",
+        "kind": "number",
+        "known": "At discharge",
+        "missing": "never blank"
+      },
+      {
+        "name": "num_lab_procedures",
+        "meaning": "Lab tests during the stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank"
+      },
+      {
+        "name": "num_procedures",
+        "meaning": "Procedures other than lab tests during the stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank"
+      },
+      {
+        "name": "num_medications",
+        "meaning": "Distinct medications given during the stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank"
+      },
+      {
+        "name": "number_outpatient",
+        "meaning": "Outpatient visits in the year before this stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At admission (past year)",
+        "missing": "never blank"
+      },
+      {
+        "name": "number_emergency",
+        "meaning": "Emergency visits in the year before this stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At admission (past year)",
+        "missing": "never blank"
+      },
+      {
+        "name": "number_inpatient",
+        "meaning": "Inpatient admissions in the year before this stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At admission (past year)",
+        "missing": "never blank"
+      },
+      {
+        "name": "number_diagnoses",
+        "meaning": "Diagnoses recorded for this stay",
+        "units": "count",
+        "kind": "number",
+        "known": "At discharge",
+        "missing": "never blank"
+      },
+      {
+        "name": "race",
+        "meaning": "Race as recorded by the hospital",
+        "units": "",
+        "kind": "category",
+        "known": "At admission",
+        "missing": "never blank",
+        "categories": [
+          "African American",
+          "Asian",
+          "Hispanic",
+          "Other",
+          "Unknown",
+          "White"
+        ]
+      },
+      {
+        "name": "admission_type",
+        "meaning": "Admission type",
+        "units": "",
+        "kind": "category",
+        "known": "At admission",
+        "missing": "never blank",
+        "categories": [
+          "Elective",
+          "Emergency",
+          "Newborn",
+          "Not recorded",
+          "Trauma Center",
+          "Urgent"
+        ]
+      },
+      {
+        "name": "admission_source",
+        "meaning": "Where the patient was admitted from",
+        "units": "",
+        "kind": "category",
+        "known": "At admission",
+        "missing": "never blank",
+        "categories": [
+          "Clinic Referral",
+          "Court/Law Enforcement",
+          "Emergency Room",
+          "Extramural Birth",
+          "HMO Referral",
+          "Not recorded",
+          "Physician Referral",
+          "Transfer from a Skilled Nursing Facility (SNF)",
+          "Transfer from a hospital",
+          "Transfer from another health care facility",
+          "Transfer from critial access hospital",
+          "Transfer from hospital inpt/same fac reslt in a sep claim"
+        ]
+      },
+      {
+        "name": "discharge_disposition",
+        "meaning": "Where the patient was discharged to (hospice and death excluded)",
+        "units": "",
+        "kind": "category",
+        "known": "At discharge",
+        "missing": "never blank",
+        "categories": [
+          "Admitted as an inpatient to this hospital",
+          "Discharged to home",
+          "Discharged/transferred to ICF",
+          "Discharged/transferred to SNF",
+          "Discharged/transferred to a federal health care facility.",
+          "Discharged/transferred to a long term care hospital.",
+          "Discharged/transferred to a nursing facility certified under Medicaid but not certified under Medicare.",
+          "Discharged/transferred to another rehab fac including rehab units of a hospital .",
+          "Discharged/transferred to another short term hospital",
+          "Discharged/transferred to another type of inpatient care institution",
+          "Discharged/transferred to home under care of Home IV provider",
+          "Discharged/transferred to home with home health service",
+          "Discharged/transferred within this institution to Medicare approved swing bed",
+          "Discharged/transferred/referred another institution for outpatient services",
+          "Discharged/transferred/referred to a psychiatric hospital of psychiatric distinct part unit of a hospital",
+          "Discharged/transferred/referred to this institution for outpatient services",
+          "Left AMA",
+          "Neonate discharged to another hospital for neonatal aftercare",
+          "Not recorded"
+        ]
+      },
+      {
+        "name": "a1c_result",
+        "meaning": "HbA1c test result during the stay (`None` = not measured)",
+        "units": "",
+        "kind": "category",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank",
+        "categories": [
+          ">7",
+          ">8",
+          "None",
+          "Normal"
+        ]
+      },
+      {
+        "name": "max_glu_serum",
+        "meaning": "Highest serum glucose result during the stay (`None` = not measured)",
+        "units": "mg/dL band",
+        "kind": "category",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank",
+        "categories": [
+          ">200",
+          ">300",
+          "None",
+          "Normal"
+        ]
+      },
+      {
+        "name": "insulin",
+        "meaning": "Insulin during the stay: not prescribed, or dose steady, up or down",
+        "units": "",
+        "kind": "category",
+        "known": "At discharge (during the stay)",
+        "missing": "never blank",
+        "categories": [
+          "Down",
+          "Not prescribed",
+          "Steady",
+          "Up"
+        ]
+      },
+      {
+        "name": "med_change",
+        "meaning": "1 = any diabetes medication changed during the stay",
+        "units": "0/1",
+        "kind": "0/1",
+        "known": "At discharge",
+        "missing": "never blank"
+      },
+      {
+        "name": "diabetes_med",
+        "meaning": "1 = any diabetes medication prescribed",
+        "units": "0/1",
+        "kind": "0/1",
+        "known": "At discharge",
+        "missing": "never blank"
+      },
+      {
+        "name": "diag1_group",
+        "meaning": "Primary diagnosis, in Strack et al.'s nine groups of ICD-9 codes",
+        "units": "",
+        "kind": "category",
+        "known": "At discharge",
+        "missing": "never blank",
+        "categories": [
+          "Circulatory",
+          "Diabetes",
+          "Digestive",
+          "Genitourinary",
+          "Injury",
+          "Musculoskeletal",
+          "Neoplasms",
+          "Other",
+          "Respiratory"
+        ]
+      }
+    ],
+    "target": {
+      "meaning": "1 = readmitted within 30 days of discharge, 0 = not (readmitted after 30 days, or not at all)",
+      "known": "30 days after discharge (the outcome)"
+    },
+    "excluded": []
+  },
+  "diabetes": {
+    "name": "Diabetes screening",
+    "unit": "adult",
+    "units": "adults",
+    "cohort": "NHANES 2017–2018: adults (18+) with an HbA1c measurement who answered “Has a doctor ever told you that you have diabetes?” with yes, no or borderline.",
+    "job": "Flag adults for follow-up testing; finding positives matters most.",
+    "teaches": "Choosing a threshold for a sensitivity target",
+    "framing": "The label is “reported doctor diagnosis or HbA1c ≥ 6.5%”. It includes adults who were already diagnosed. It identifies the label at one time point and does not predict future diabetes. Results describe adults in this sample.",
+    "positive": "Diabetes (reported doctor diagnosis or HbA1c ≥ 6.5%)",
+    "negative": "No diabetes by this label",
+    "prediction_point": "At the survey examination, before the blood test results",
+    "source": "CDC/NCHS National Health and Nutrition Examination Survey (NHANES) 2017–2018, public-use files",
+    "url": "https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017",
+    "citation": "Centers for Disease Control and Prevention, National Center for Health Statistics. National Health and Nutrition Examination Survey 2017–2018.",
+    "licence": "Public domain",
+    "one_per_patient": true,
+    "columns": [
+      {
+        "name": "row_id",
+        "meaning": "Row number in this file",
+        "units": "",
+        "kind": "id",
+        "known": "Assigned by the course",
+        "missing": "never blank"
+      },
+      {
+        "name": "split",
+        "meaning": "`train` (the models learn from these rows) or `test` (used only to evaluate them)",
+        "units": "",
+        "kind": "id",
+        "known": "Assigned by the course",
+        "missing": "never blank"
+      },
+      {
+        "name": "age",
+        "meaning": "Age (80 means 80 or older)",
+        "units": "years",
+        "kind": "number",
+        "known": "At the interview",
+        "missing": "never blank"
+      },
+      {
+        "name": "female",
+        "meaning": "1 = female, 0 = male",
+        "units": "0/1",
+        "kind": "0/1",
+        "known": "At the interview",
+        "missing": "never blank"
+      },
+      {
+        "name": "bmi",
+        "meaning": "Body mass index",
+        "units": "kg/m²",
+        "kind": "number",
+        "known": "At the examination",
+        "missing": "blank = not recorded (86 rows)"
+      },
+      {
+        "name": "waist",
+        "meaning": "Waist circumference",
+        "units": "cm",
+        "kind": "number",
+        "known": "At the examination",
+        "missing": "blank = not recorded (280 rows)"
+      },
+      {
+        "name": "sbp",
+        "meaning": "Systolic blood pressure, mean of up to 3 readings",
+        "units": "mmHg",
+        "kind": "number",
+        "known": "At the examination",
+        "missing": "blank = not recorded (254 rows)"
+      },
+      {
+        "name": "income_ratio",
+        "meaning": "Family income ÷ the poverty line (5 means 5 or more)",
+        "units": "ratio",
+        "kind": "number",
+        "known": "At the interview",
+        "missing": "blank = not recorded (683 rows)"
+      },
+      {
+        "name": "race",
+        "meaning": "Race/ethnicity (self-reported)",
+        "units": "",
+        "kind": "category",
+        "known": "At the interview",
+        "missing": "never blank",
+        "categories": [
+          "Mexican American",
+          "Non-Hispanic Asian",
+          "Non-Hispanic Black",
+          "Non-Hispanic White",
+          "Other / multiracial",
+          "Other Hispanic"
+        ]
+      },
+      {
+        "name": "hdl",
+        "meaning": "HDL cholesterol",
+        "units": "mg/dL",
+        "kind": "number",
+        "known": "From the blood sample taken at the examination",
+        "missing": "blank = not recorded (89 rows)"
+      },
+      {
+        "name": "total_chol",
+        "meaning": "Total cholesterol",
+        "units": "mg/dL",
+        "kind": "number",
+        "known": "From the blood sample taken at the examination",
+        "missing": "blank = not recorded (89 rows)"
+      }
+    ],
+    "target": {
+      "meaning": "1 = told by a doctor they have diabetes, or HbA1c ≥ 6.5%; 0 = neither",
+      "known": "From the interview and the HbA1c result (the outcome)"
+    },
+    "excluded": [
+      {
+        "name": "hba1c",
+        "meaning": "HbA1c (%)",
+        "known": "From the same blood test that defines the label (HbA1c ≥ 6.5% is positive)"
+      },
+      {
+        "name": "told_diabetes",
+        "meaning": "“Has a doctor ever told you that you have diabetes?” (DIQ010)",
+        "known": "At the interview; a yes defines the label"
+      },
+      {
+        "name": "insulin",
+        "meaning": "Now taking insulin (DIQ050)",
+        "known": "At the interview; only people already treated for diabetes answer yes"
+      },
+      {
+        "name": "pills",
+        "meaning": "Now taking diabetes pills (DIQ070)",
+        "known": "At the interview; only people already treated for diabetes answer yes"
+      }
+    ]
+  }
+}

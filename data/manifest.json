@@ -1,0 +1,161 @@
+{
+  "built_by": "reproduce/make_data.py in the M11 activity repository (instructor-only)",
+  "dataset_definitions": "Readmission and diabetes cohorts from snsie/classification-app pipeline/datasets.py",
+  "raw_files": {
+    "DEMO_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.xpt",
+      "sha256": "c0b46e0345ea19404928656277c8b0d10b0cca348a9b2fe4fc3c67e8b7ee73ec",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "BMX_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/BMX_J.xpt",
+      "sha256": "8d675e42d8826ac98714b2c3dd4c5138a5e353fb4424f7eff5e6db4a01ce838a",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "BPX_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/BPX_J.xpt",
+      "sha256": "f98f1d9a4c18173e715c749b4294f6f1525140d5ad5751316bb17cc038fb3423",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "GHB_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/GHB_J.xpt",
+      "sha256": "35f07094573a0061a03ed609a5a363b34eb1b1c7065d1623b43d72e132a8a654",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "DIQ_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DIQ_J.xpt",
+      "sha256": "1ecbf5360dfc331d1efbf32198553dc30e9a1f4cff0a907ed30ca72bac797f89",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "HDL_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/HDL_J.xpt",
+      "sha256": "9f4eb41b89f0c9f3d6262f873e671eeb2f2eb40581a8426b2a3c8fd4fc19439e",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "TCHOL_J.xpt": {
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/TCHOL_J.xpt",
+      "sha256": "0291a6a4f6d82dac8392c8c992b519946824dfeda01647935520cf506ed9f4ab",
+      "licence": "Public domain (US government work), CDC/NCHS"
+    },
+    "diabetic_data.csv": {
+      "url": "https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip",
+      "sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97",
+      "licence": "CC BY 4.0, UCI Machine Learning Repository"
+    },
+    "IDS_mapping.csv": {
+      "url": "https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip",
+      "sha256": "f1bb82b471cb34649352597572c9b1fb00bd27f77b9f5a22a03dc3eb1039749e",
+      "licence": "CC BY 4.0, UCI Machine Learning Repository"
+    }
+  },
+  "versions": {
+    "python": "3.11",
+    "numpy": "2.4.6",
+    "pandas": "3.1.0",
+    "scikit-learn": "1.9.1"
+  },
+  "split": {
+    "seed": 0,
+    "test_share": 0.2,
+    "method": "train_test_split(test_size=0.2, stratify=target, random_state=0) → train/test"
+  },
+  "datasets": {
+    "readmission": {
+      "file": "readmission.csv",
+      "sha256": "83968df5574efd8af99f6bd6146a9d9a4d1acbecfc7e76af758e7baf5ff10fd0",
+      "n_rows": 20000,
+      "n_pos": 1796,
+      "prevalence": 0.0898,
+      "n_train": 16000,
+      "n_train_pos": 1437,
+      "n_test": 4000,
+      "n_test_pos": 359,
+      "predictors": [
+        "age",
+        "female",
+        "time_in_hospital",
+        "num_lab_procedures",
+        "num_procedures",
+        "num_medications",
+        "number_outpatient",
+        "number_emergency",
+        "number_inpatient",
+        "number_diagnoses",
+        "race",
+        "admission_type",
+        "admission_source",
+        "discharge_disposition",
+        "a1c_result",
+        "max_glu_serum",
+        "insulin",
+        "med_change",
+        "diabetes_med",
+        "diag1_group"
+      ],
+      "cohort": [
+        {
+          "step": "All encounters in the UCI file",
+          "n": 101766
+        },
+        {
+          "step": "Excluding discharge to hospice or death",
+          "n": 99343
+        },
+        {
+          "step": "First encounter per patient",
+          "n": 69990
+        },
+        {
+          "step": "Stratified random sample (random_state=0)",
+          "n": 20000
+        }
+      ],
+      "source": "UCI Machine Learning Repository: Diabetes 130-US Hospitals for Years 1999–2008",
+      "url": "https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008",
+      "licence": "CC BY 4.0"
+    },
+    "diabetes": {
+      "file": "diabetes.csv",
+      "sha256": "c2a290f9d214fe0026f580c094b106c8cf1adafcb4495f8c953605a3e8444484",
+      "n_rows": 5257,
+      "n_pos": 997,
+      "prevalence": 0.1897,
+      "n_train": 4205,
+      "n_train_pos": 797,
+      "n_test": 1052,
+      "n_test_pos": 200,
+      "predictors": [
+        "age",
+        "female",
+        "bmi",
+        "waist",
+        "sbp",
+        "income_ratio",
+        "race",
+        "hdl",
+        "total_chol"
+      ],
+      "cohort": [
+        {
+          "step": "NHANES 2017–2018 participants",
+          "n": 9254
+        },
+        {
+          "step": "Adults (18+)",
+          "n": 5856
+        },
+        {
+          "step": "HbA1c measured",
+          "n": 5261
+        },
+        {
+          "step": "Answered the diabetes question (yes / no / borderline)",
+          "n": 5257
+        }
+      ],
+      "source": "CDC/NCHS National Health and Nutrition Examination Survey (NHANES) 2017–2018, public-use files",
+      "url": "https://wwwn.cdc.gov/nchs/nhanes/continuousnhanes/default.aspx?BeginYear=2017",
+      "licence": "Public domain"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Pinned versions, CPU only. Python 3.11 or newer.
+numpy==2.4.6
+pandas==3.1.0
+scikit-learn==1.9.1
+lightgbm==4.7.0
+streamlit==1.66.1

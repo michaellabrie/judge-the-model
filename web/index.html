@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Judge the Model</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <aside class="sidebar" aria-label="Choose what to show">
+    <fieldset>
+      <legend>Section</legend>
+      <div id="sections"></div>
+    </fieldset>
+    <label for="dataset">Dataset</label>
+    <select id="dataset"></select>
+    <label for="model">Model</label>
+    <select id="model"></select>
+  </aside>
+  <main>
+    <h1>Judge the Model</h1>
+    <p class="caption">Which classifier would you trust for this job, at what threshold, and with what limits?</p>
+    <section class="box" id="recommendations" aria-labelledby="rec-h"><h2 id="rec-h">Recommendations</h2></section>
+    <h2 id="section-title"></h2>
+    <p class="caption" id="context"></p>
+    <div id="content"><p>Loading results…</p></div>
+  </main>
+</body>
+</html>

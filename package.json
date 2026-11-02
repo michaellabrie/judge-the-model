@@ -1,0 +1,12 @@
+{
+  "name": "judge-the-model",
+  "private": true,
+  "type": "module",
+  "description": "Node version of the app: npm start previews web/ on your computer; GitHub Pages hosts it. No npm dependencies.",
+  "scripts": {
+    "start": "node web/server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
