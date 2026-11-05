@@ -1,0 +1,21 @@
+# The base theme for streamlit_app.py. It colours Streamlit's own controls (dropdown menus, slider, radio),
+# which the app's stylesheet can't fully reach. Colours match the tokens at the top of STYLE in streamlit_app.py.
+[theme]
+base = "dark"
+primaryColor = "#25a5c4"
+backgroundColor = "#0a111c"
+secondaryBackgroundColor = "#162231"
+textColor = "#e8eef5"
+borderColor = "#344860"
+linkColor = "#8fd3e0"
+baseRadius = "small"
+font = "IBM Plex Sans:https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap"
+codeFont = "IBM Plex Mono:https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+
+[theme.sidebar]
+backgroundColor = "#12171f"
+secondaryBackgroundColor = "#1b222c"
+borderColor = "#2c3a4c"
+
+[client]
+toolbarMode = "minimal"
